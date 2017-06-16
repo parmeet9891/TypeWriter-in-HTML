@@ -1,0 +1,51 @@
+<html>
+<head>
+  <style>
+  body {
+    background: #333;
+    display: flex;
+    justify-content: center;
+  }
+  h1 {
+    background-color: #fff;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap; /* BY REMOVING THIS CONTENT, THE CONTENT WILL GOES TO NEXT LINE. */
+    margin: 2em auto; /* AVOID SCROLLING */
+    animation: typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+  }
+  @keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+  </style>
+</head>
+<body>
+  <div id="typewriter"></div>
+  <script type='text/javascript'>
+  var str = "<h1>Hello, I am learning typewriter effect using JavaScript</h1>",
+  i = 0,
+  isTag,
+  text = '';
+
+(function type() {
+  text = str.slice(0, ++i);
+  if (text === str) return;
+
+  document.getElementById('typewriter').innerHTML = text;
+
+  var char = text.slice(-1);
+  if( char === '<' ) isTag = true;
+  if( char === '>' ) isTag = false;
+
+  if (isTag) return type();
+  setTimeout(type,20);
+}());
+  </script>
+</body>
+</html>
